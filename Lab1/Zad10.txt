@@ -1,0 +1,14 @@
+Дан список строк с клавиатуры. Упорядочить по количеству слов в строке.
+def Sort_spisok_strok():
+    strings = []
+    n = int(input("Введите количество строк: "))
+    for i in range(n):
+        string = input("Введите строку {}: ".format(i+1))
+        strings.append(string)
+
+    # упорядочивание списка по количеству слов в каждой строке
+    sorted_strings = sorted(strings, key=len(string.split()))
+
+    print("Отсортированный список по количеству слов в строке:")
+    for string in sorted_strings:
+        print(string)
