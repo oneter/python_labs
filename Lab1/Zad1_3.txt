@@ -1,0 +1,27 @@
+Найти произведение максимального числа, не взаимно простого с данным, не делящегося на наименьший делитель исходно числа, и суммы цифр числа, меньших 5
+def ProizvMax(n):
+    def MaxNeVzProst(n):
+        def smallest_delitel(n):
+            if n == 1:
+                return 1
+            for i in range(2, int(n**0.5) + 1):
+                if n % i == 0:
+                    return i
+            return n
+        max = 0
+        for k in range(2, n, 2):
+            p = 0
+            for j in range(2,k+1):
+                if (n % j == 0) and (k % j == 0):
+                    p += 1
+            if ((p != 0) and (k%smallest_delitel(n) == 0) and  (k > max)): max = k
+    return k
+    def summa_cifr_mensh_5(n):
+        total = 0
+        while n > 0:
+            digit = n % 10
+            if digit < 5:
+                total += digit
+            n //= 10
+        return total
+    return MaxNeVzProst*summa_cifr_mensh_5
