@@ -1,0 +1,6 @@
+Дано натуральное число. Необходимо найти количество различных
+цифр в его десятичной записи.
+def count_different_digits(n):
+    digits = str(n)
+    unique_digits = set(digits)
+    return len(unique_digits)
