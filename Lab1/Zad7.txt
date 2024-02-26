@@ -1,0 +1,6 @@
+Дана строка. Необходимо найти все незадействованные символы
+латиницы в этой строке.
+def find_unused_latin_chars(text):
+    latin_chars = set(chr(i) for i in range(ord('a'), ord('z')+1))
+    unused_chars = [char for char in text if char.lower() not in latin_chars]
+    return unused_chars
