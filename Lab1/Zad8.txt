@@ -1,0 +1,8 @@
+Дана строка. Необходимо подсчитать количество цифр в этой строке,
+значение которых больше 5
+def count_cifr_bolshe_5(text):
+    count = 0
+    for char in text:
+        if char.isdigit() and int(char) > 5:
+            count += 1
+    return count
