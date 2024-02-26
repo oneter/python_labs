@@ -1,0 +1,5 @@
+Дана строка. Необходимо проверить, является ли она палиндромом.
+def is_palindrome(s):
+    s = ''.join(char.lower() for char in s if char.isalnum())
+	if (s == s[::-1]) return print("палиндром")
+	else return print("не палиндром")
