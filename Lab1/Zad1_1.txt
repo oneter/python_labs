@@ -1,0 +1,10 @@
+Найти количество четных чисел, не взаимно простых с данным.
+def neVzProst(n):
+    t = 0
+    for k in range(2, n, 2):
+        p = 0
+        for j in range(2,k+1):
+            if (n % j == 0) and (k % j == 0):
+                p += 1
+        if (p != 0): t += 1
+    return t
