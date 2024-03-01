@@ -1,0 +1,37 @@
+Отсортировать строки в порядке увеличения квадратичного отклонения частоты встречаемости самого часто встречаемого в строке символа от частоты его встречаемости в текстах на этом алфавите. Решить с помощью методов строк.
+
+def frequency_deviation(string):
+    freq_dict = {}
+    for char in string:
+        if char in freq_dict:
+            freq_dict[char] += 1
+        else:
+            freq_dict[char] = 1
+    
+    # самый часто встречаемый символ и его частота встречаемости
+    most_common_char = max(freq_dict, key=freq_dict.get)
+    most_common_freq = freq_dict[most_common_char]
+
+    # Рассчитываем среднюю частоту встречаемости символов в текстах на этом алфавите
+    alphabet_freq = 1 / len(freq_dict)
+
+    # Рассчитываем квадратичное отклонение частоты встречаемости самого часто встречаемого символа от средней частоты встречаемости символов в текстах на этом алфавите
+    deviation = (most_common_freq - alphabet_freq) ** 2
+
+    return deviation
+
+def main():
+
+    strings = []
+    n = int(input("Введите количество строк: "))
+    for i in range(n):
+        string = input("Введите строку {}: ".format(i+1))
+        strings.append(string)
+
+    sorted_strings = sorted(strings, key=frequency_deviation)
+
+
+    print("Отсортированный список по увеличению квадратичного отклонения частоты встречаемости символов:")
+    for string in sorted_strings:
+        print(string)
+
