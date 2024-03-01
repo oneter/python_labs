@@ -1,0 +1,44 @@
+В порядке квадратичного отклонения дисперсии максимального
+среднего веса ASCII-кода тройки символов в строке от максимального
+среднего веса ASCII-кода тройки символов в первой строке.
+
+def calculate_ascii_weight(triple):
+    # Функция для расчета веса ASCII-кода тройки символов
+    weight = sum(ord(char) for char in triple)
+    return weight
+
+def calculate_max_avg_ascii_weight(string):
+    # Функция для расчета максимального среднего значения веса ASCII-кода троек символов в строке
+    max_avg_weight = 0
+    for i in range(len(string) - 2):
+        avg_weight = sum(ord(char) for char in string[i:i+3]) / 3
+        max_avg_weight = max(max_avg_weight, avg_weight)
+    return max_avg_weight
+
+def variance_deviation(string, max_avg_weight_first_line):
+    # Функция для расчета квадратичного отклонения дисперсии максимального среднего веса ASCII-кода троек символов в строке
+    weights = [calculate_ascii_weight(string[i:i+3]) for i in range(len(string) - 2)]
+    max_avg_weight = max(weights) / 3
+    variance = sum((weight - max_avg_weight) ** 2 for weight in weights) / len(weights)
+    variance_deviation = (variance - max_avg_weight_first_line) ** 2
+    return variance_deviation
+
+def main():
+
+    strings = []
+    n = int(input("Введите количество строк: "))
+    for i in range(n):
+        string = input("Введите строку {}: ".format(i+1))
+        strings.append(string)
+
+
+    max_avg_weight_first_line = calculate_max_avg_ascii_weight(strings[0])
+
+
+    sorted_strings = sorted(strings, key=lambda x: variance_deviation(x, max_avg_weight_first_line))
+
+
+    print("\nОтсортированный список по квадратичному отклонению дисперсии:")
+    for string in sorted_strings:
+        print(string)
+
