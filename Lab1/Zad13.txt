@@ -1,0 +1,27 @@
+Отсортировать строки в порядке увеличения разницы между количеством сочетаний «гласная-согласная» и «согласная-гласная» в строке. Решить с помощью методов строк.
+
+def count_vowel_consonant_combinations(string):
+    vowels = "aeiouAEIOU"
+    consonants = "bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ"
+    count_vc_combinations = 0  # количество гласная-согласная сочетаний
+    count_cv_combinations = 0  # количество согласная-гласная сочетаний
+    for i in range(len(string) - 1):
+        if string[i] in vowels and string[i+1] in consonants:
+            count_vc_combinations += 1
+        elif string[i] in consonants and string[i+1] in vowels:
+            count_cv_combinations += 1
+    return abs(count_vc_combinations - count_cv_combinations)
+
+def main():
+    strings = []
+    n = int(input("Введите количество строк: "))
+    for i in range(n):
+        string = input("Введите строку {}: ".format(i+1))
+        strings.append(string)
+
+    # Упорядочивание списка по увеличению разницы между количеством сочетаний "гласная-согласная" и "согласная-гласная" в каждой строке
+    sorted_strings = sorted(strings, key=count_vowel_consonant_combinations)
+
+    print("\nОтсортированный список по увеличению разницы между количеством сочетаний:")
+    for string in sorted_strings:
+        print(string)
