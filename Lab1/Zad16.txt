@@ -1,0 +1,15 @@
+Дан целочисленный массив. Необходимо найти элементы, расположенные между первым и вторым максимальным. Решить с помощью методов списков.
+
+def find_elements_between_max(arr):
+    #индекс первого максимального элемента
+    max_index = arr.index(max(arr))
+    arr_without_max = arr[:max_index] + arr[max_index + 1:]
+    #индекс второго максимального элемента
+    second_max_index = arr_without_max.index(max(arr_without_max))
+
+    start_index = min(max_index, second_max_index)
+    end_index = max(max_index, second_max_index)
+
+    return arr[start_index + 1:end_index]
+
+
