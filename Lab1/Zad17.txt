@@ -1,0 +1,14 @@
+Дан целочисленный массив. Необходимо найти элементы, расположенные между первым и последним максимальным. Решить с помощью методов списков.
+
+def find_elements_between_max(arr):
+    #индекс первого максимального элемента
+    first_max_index = arr.index(max(arr))
+    #индекс последнего максимального элемента (если есть повторяющиеся максимальные элементы)
+    last_max_index = len(arr) - 1 - arr[::-1].index(max(arr))
+
+    start_index = min(first_max_index, last_max_index)
+    end_index = max(first_max_index, last_max_index)
+    # элементы между первым и последним максимальными
+    return arr[start_index + 1:end_index]
+
+
