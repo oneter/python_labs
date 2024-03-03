@@ -1,0 +1,10 @@
+Дан целочисленный массив. Вывести индексы массива в том порядке, в котором соответствующие им элементы образуют убывающую последовательность.
+
+def find_decreasing_indexes(arr):
+
+    indexed_arr = list(enumerate(arr))
+
+    sorted_arr = sorted(indexed_arr, key=lambda x: x[1], reverse=True)
+
+    decreasing_indexes = [index for index, _ in sorted_arr]
+    return decreasing_indexes
