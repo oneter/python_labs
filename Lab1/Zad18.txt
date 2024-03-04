@@ -1,0 +1,12 @@
+Дан целочисленный массив. Необходимо найти минимальный
+четный элемент. Решить с помощью методов списков.
+
+def find_min_even_element(arr):
+    # Создаем список из всех четных элементов массива
+    even_elements = [num for num in arr if num % 2 == 0]
+
+    if not even_elements:
+        return None
+
+    min_even = min(even_elements)
+    return min_even
